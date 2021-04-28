@@ -1,16 +1,16 @@
 name: beacon_monitoring_platform_interface
 description: A common platform interface for the beacon_monitoring plugin.
-version: 1.0.0
+version: 2.0.0
 homepage: https://github.com/ObjectivityLtd/beacon_monitoring
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^1.0.2
+  plugin_platform_interface: ^2.0.0
 
 dev_dependencies:
   flutter_test:

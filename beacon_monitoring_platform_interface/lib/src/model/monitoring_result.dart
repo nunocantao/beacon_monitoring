@@ -25,14 +25,14 @@ class MonitoringResult {
   static const _state = 'state';
 
   final Region region;
-  final MonitoringEvent type;
+  final MonitoringEvent? type;
 
   /// This value is not null when [type] is [MonitoringEvent.didDetermineState]
-  final MonitoringState state;
+  final MonitoringState? state;
 
   MonitoringResult({
-    @required this.region,
-    @required this.type,
+    required this.region,
+    required this.type,
     this.state,
   });
 
@@ -43,7 +43,7 @@ class MonitoringResult {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         _region: region.toJson(),
-        _type: type.toJson(),
+        _type: type!.toJson(),
         _state: state?.toJson(),
       };
 
@@ -52,7 +52,7 @@ class MonitoringResult {
 }
 
 extension MonitoringEventExtension on MonitoringEvent {
-  static parse(String value) {
+  static parse(String? value) {
     if (_StringExtension.isBlank(value)) return null;
 
     return MonitoringEvent.values.firstWhere((e) => describeEnum(e) == value);
@@ -64,13 +64,13 @@ extension MonitoringEventExtension on MonitoringEvent {
 }
 
 extension _StringExtension on String {
-  static bool isBlank(String value) {
+  static bool isBlank(String? value) {
     return value == null || value.trim().isEmpty;
   }
 }
 
 extension MonitoringStateExtension on MonitoringState {
-  static parse(String value) {
+  static parse(String? value) {
     if (_StringExtension.isBlank(value)) return null;
 
     return MonitoringState.values.firstWhere((e) => describeEnum(e) == value);

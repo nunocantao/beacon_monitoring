@@ -263,10 +263,10 @@ void main() {
             Config.startBackgroundMonitoring,
             arguments: <String, dynamic>{
               Config.backgroundCallbackId: PluginUtilities.getCallbackHandle(
-                      backgroundCallbackDispatcher)
+                      backgroundCallbackDispatcher)!
                   .toRawHandle(),
               Config.monitoringCallbackId:
-                  PluginUtilities.getCallbackHandle(_monitoringCallback)
+                  PluginUtilities.getCallbackHandle(_monitoringCallback)!
                       .toRawHandle(),
             },
           )
@@ -289,7 +289,7 @@ void main() {
         '${Config.startBackgroundMonitoring} Exception -> throws ${value[0]}',
         () async {
           responses[Config.startBackgroundMonitoring] =
-              PlatformException(code: value[0]);
+              PlatformException(code: value[0] as String);
 
           _expectException(
             beaconMonitoring.startBackgroundMonitoring(_monitoringCallback),
@@ -323,7 +323,7 @@ void main() {
         event.toString(),
       );
 
-      final result = await beaconMonitoring.monitoring().first;
+      final result = await beaconMonitoring.monitoring()!.first;
       expect(
         result.toJson(),
         event.toJson(),
@@ -343,7 +343,7 @@ void main() {
         event.toString(),
       );
 
-      final result = await beaconMonitoring.ranging().first;
+      final result = await beaconMonitoring.ranging()!.first;
       expect(
         result.toJson(),
         event.toJson(),
@@ -367,9 +367,9 @@ void _initializeMockedEventChannel(
 ) {
   const standardMethod = StandardMethodCodec();
 
-  ServicesBinding.instance.defaultBinaryMessenger.setMockMessageHandler(
+  ServicesBinding.instance!.defaultBinaryMessenger.setMockMessageHandler(
     channelName,
-    (ByteData message) async {
+    (ByteData? message) async {
       final MethodCall methodCall = standardMethod.decodeMethodCall(message);
       if (methodCall.method == 'listen') {
         _emitEvent(channelName, standardMethod.encodeSuccessEnvelope(data));
@@ -384,10 +384,10 @@ void _initializeMockedEventChannel(
   );
 }
 
-void _emitEvent(String channelName, ByteData event) {
-  ServicesBinding.instance.defaultBinaryMessenger.handlePlatformMessage(
+void _emitEvent(String channelName, ByteData? event) {
+  ServicesBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
     channelName,
     event,
-    (ByteData reply) {},
+    (ByteData? reply) {},
   );
 }

@@ -15,7 +15,7 @@ class Region {
   final List<dynamic> ids;
 
   Region({
-    @required this.identifier,
+    required this.identifier,
     this.ids = const [],
   });
 
@@ -34,10 +34,10 @@ class Region {
 
 class RegionIBeacon extends Region {
   RegionIBeacon({
-    @required String identifier,
-    @required String proximityUUID,
-    int major,
-    int minor,
+    required String identifier,
+    required String? proximityUUID,
+    int? major,
+    int? minor,
   }) : super(
           identifier: identifier,
           ids: [],
@@ -67,7 +67,7 @@ class RegionIBeacon extends Region {
 
   String get proximityUUID => ids[0];
 
-  int get major => ids.length > 1 ? ids[1] : null;
+  int? get major => ids.length > 1 ? ids[1] : null;
 
-  int get minor => ids.length > 2 ? ids[2] : null;
+  int? get minor => ids.length > 2 ? ids[2] : null;
 }

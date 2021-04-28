@@ -31,12 +31,12 @@ void backgroundCallbackDispatcher() {
     try {
       final json = jsonDecode(call.arguments);
       final result = BackgroundCallbackResult.fromJson(json);
-      final handle = CallbackHandle.fromRawHandle(result.monitoringCallbackId);
+      final handle = CallbackHandle.fromRawHandle(result.monitoringCallbackId!);
       final callback = PluginUtilities.getCallbackFromHandle(handle);
       assert(callback != null);
-      callback(result.monitoringResult);
+      callback!(result.monitoringResult);
     } catch (e) {
-      debugPrint(e);
+      debugPrint(e.toString());
     }
   });
 
@@ -44,8 +44,8 @@ void backgroundCallbackDispatcher() {
 }
 
 class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
-  Stream<MonitoringResult> _monitoringStream;
-  Stream<RangingResult> _rangingStream;
+  Stream<MonitoringResult>? _monitoringStream;
+  Stream<RangingResult>? _rangingStream;
 
   @override
   Future<void> setDebug(bool debug) {
@@ -59,7 +59,7 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
   Future<bool> get isBluetoothEnabled {
     return _methodChannel.invokeMethod<bool>(
       Config.isBluetoothEnabled,
-    );
+    ).then((value) => value == true);
   }
 
   @override
@@ -89,7 +89,7 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
   Future<bool> get isLocationEnabled {
     return _methodChannel.invokeMethod<bool>(
       Config.isLocationEnabled,
-    );
+    ).then((value) => value == true);
   }
 
   @override
@@ -142,7 +142,7 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
   Future<bool> get isMonitoringStarted {
     return _methodChannel.invokeMethod<bool>(
       Config.isMonitoringStarted,
-    );
+    ).then((value) => value == true);
   }
 
   @override
@@ -172,7 +172,7 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
   }
 
   int _getCallbackId(dynamic callback) {
-    return PluginUtilities.getCallbackHandle(callback).toRawHandle();
+    return PluginUtilities.getCallbackHandle(callback)!.toRawHandle();
   }
 
   @override
@@ -190,7 +190,7 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
           .map((event) => MonitoringResult.fromJson(jsonDecode(event)));
     }
 
-    return _monitoringStream;
+    return _monitoringStream!;
   }
 
   @override
@@ -201,6 +201,6 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
           .map((event) => RangingResult.fromJson(jsonDecode(event)));
     }
 
-    return _rangingStream;
+    return _rangingStream!;
   }
 }

@@ -14,11 +14,11 @@ class RangingResult {
   static const _beacons = 'beacons';
 
   final Region region;
-  final List<Beacon> beacons;
+  final List<Beacon>? beacons;
 
   RangingResult({
-    @required this.region,
-    @required this.beacons,
+    required this.region,
+    required this.beacons,
   });
 
   RangingResult.fromJson(Map<String, dynamic> json)
@@ -31,7 +31,7 @@ class RangingResult {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         _region: region.toJson(),
-        _beacons: beacons.map((e) => e.toJson()).toList(),
+        _beacons: beacons!.map((e) => e.toJson()).toList(),
       };
 
   @override

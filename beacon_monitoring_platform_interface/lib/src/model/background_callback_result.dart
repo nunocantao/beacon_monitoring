@@ -10,7 +10,7 @@ class BackgroundCallbackResult {
   static const _monitoringCallbackId = 'monitoringCallbackId';
   static const _monitoringResult = 'monitoringResult';
 
-  final int monitoringCallbackId;
+  final int? monitoringCallbackId;
   final MonitoringResult monitoringResult;
 
   BackgroundCallbackResult.fromJson(Map<String, dynamic> json)
