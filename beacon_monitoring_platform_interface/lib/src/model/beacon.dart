@@ -16,9 +16,9 @@ class Beacon {
   final double distance;
 
   Beacon({
-    @required this.ids,
-    @required this.rssi,
-    @required this.distance,
+    required this.ids,
+    required this.rssi,
+    required this.distance,
   });
 
   Beacon.fromJson(Map<String, dynamic> json)
