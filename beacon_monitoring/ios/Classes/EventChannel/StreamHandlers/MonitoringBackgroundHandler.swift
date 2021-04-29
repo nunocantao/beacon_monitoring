@@ -113,7 +113,7 @@ final class MonitoringBackgroundHandler: NSObject {
     }
     private func sendMonitoringEvent(_ event: FlutterMonitoringResult) {
         guard let callbackId = CallbackDispatcher.callbackId else { return }
-        let backgroundMonitoringResult = FlutterBackgroundMonitoringResult(backgroundCallbackId: callbackId, monitoringResult: event)
+        let backgroundMonitoringResult = FlutterBackgroundMonitoringResult(monitoringCallbackId: callbackId, monitoringResult: event)
         backgroundMethodChannel?.invokeMethod("", arguments: backgroundMonitoringResult.toFlutterObject())
     }
     private func cacheMonitoringEvent(_ event: FlutterMonitoringResult) {
