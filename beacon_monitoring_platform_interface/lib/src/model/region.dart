@@ -5,8 +5,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
 class Region {
   static const _ids = 'ids';
   static const _identifier = 'identifier';

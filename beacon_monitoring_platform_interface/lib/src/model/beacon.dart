@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 class Beacon {
   static const _ids = 'ids';
   static const _rssi = 'rssi';

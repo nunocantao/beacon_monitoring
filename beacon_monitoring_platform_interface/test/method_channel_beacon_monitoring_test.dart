@@ -323,7 +323,7 @@ void main() {
         event.toString(),
       );
 
-      final result = await beaconMonitoring.monitoring()!.first;
+      final result = await beaconMonitoring.monitoring().first;
       expect(
         result.toJson(),
         event.toJson(),
@@ -343,7 +343,7 @@ void main() {
         event.toString(),
       );
 
-      final result = await beaconMonitoring.ranging()!.first;
+      final result = await beaconMonitoring.ranging().first;
       expect(
         result.toJson(),
         event.toJson(),
