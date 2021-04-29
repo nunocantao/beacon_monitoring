@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
   var _locationPermission = 'UNKNOWN';
   var _debug = false;
 
-  StreamSubscription _monitoringStreamSubscription;
-  StreamSubscription _rangingStreamSubscription;
+  StreamSubscription? _monitoringStreamSubscription;
+  StreamSubscription? _rangingStreamSubscription;
 
   @override
   void initState() {
@@ -122,7 +122,7 @@ class _MyAppState extends State<MyApp> {
 
   void _stopListeningMonitoringStream() {
     if (_isListeningMonitoringStream()) {
-      _monitoringStreamSubscription.cancel();
+      _monitoringStreamSubscription?.cancel();
       setState(() {
         _monitoringStreamSubscription = null;
       });
@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
 
   void _stopListeningRangingStream() {
     if (_isListeningRangingStream()) {
-      _rangingStreamSubscription.cancel();
+      _rangingStreamSubscription?.cancel();
       setState(() {
         _rangingStreamSubscription = null;
       });
@@ -294,7 +294,7 @@ class _MyAppState extends State<MyApp> {
 
   Widget _createGenericButton(String text, Function onPressed) {
     return RaisedButton(
-      onPressed: onPressed,
+      onPressed: () => onPressed(),
       child: Text(text),
     );
   }
