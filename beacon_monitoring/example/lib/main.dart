@@ -227,12 +227,12 @@ class _MyAppState extends State<MyApp> {
 
   Widget _createDebugButton() {
     if (_debug) {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _turnDebugOff(),
         child: Text("Turn debug off"),
       );
     } else {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _turnDebugOn(),
         child: Text("Turn debug on"),
       );
@@ -243,7 +243,7 @@ class _MyAppState extends State<MyApp> {
     return Row(
       children: [
         Flexible(
-          child: RaisedButton(
+          child: ElevatedButton(
             onPressed: () => _startBackgroundMonitoring(),
             child: Text(
               "Start background monitoring",
@@ -252,7 +252,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         Flexible(
-          child: RaisedButton(
+          child: ElevatedButton(
             onPressed: () => _stopBackgroundMonitoring(),
             child: Text(
               "Stop background monitoring",
@@ -266,12 +266,12 @@ class _MyAppState extends State<MyApp> {
 
   Widget _createListeningMonitoringStreamButton() {
     if (!_isListeningMonitoringStream()) {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _startListeningMonitoringStream(),
         child: Text("Start listening on monitoring stream"),
       );
     } else {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _stopListeningMonitoringStream(),
         child: Text("Stop listening on monitoring stream"),
       );
@@ -280,12 +280,12 @@ class _MyAppState extends State<MyApp> {
 
   Widget _createListeningRangingStreamButton() {
     if (!_isListeningRangingStream()) {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _startListeningRangingStream(),
         child: Text("Start listening on ranging stream"),
       );
     } else {
-      return RaisedButton(
+      return ElevatedButton(
         onPressed: () => _stopListeningRangingStream(),
         child: Text("Stop listening on ranging stream"),
       );
@@ -293,7 +293,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget _createGenericButton(String text, Function onPressed) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () => onPressed(),
       child: Text(text),
     );
