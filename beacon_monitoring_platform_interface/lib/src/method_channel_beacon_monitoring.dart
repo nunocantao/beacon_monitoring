@@ -33,7 +33,6 @@ void backgroundCallbackDispatcher() {
       final result = BackgroundCallbackResult.fromJson(json);
       final handle = CallbackHandle.fromRawHandle(result.monitoringCallbackId);
       final callback = PluginUtilities.getCallbackFromHandle(handle);
-      assert(callback != null);
       callback!(result.monitoringResult);
     } catch (e) {
       debugPrint(e.toString());
