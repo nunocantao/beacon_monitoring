@@ -7,7 +7,7 @@ import Foundation
 struct FlutterBackgroundMonitoringResult: Codable {
 
     // MARK: - Public Properties
-    let backgroundCallbackId: Int64
+    let monitoringCallbackId: Int64
     let monitoringResult: FlutterMonitoringResult
 
 }
