@@ -33,7 +33,7 @@ class Region {
 class RegionIBeacon extends Region {
   RegionIBeacon({
     required String identifier,
-    required String? proximityUUID,
+    String? proximityUUID,
     int? major,
     int? minor,
   }) : super(

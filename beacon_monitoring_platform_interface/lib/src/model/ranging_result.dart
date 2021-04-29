@@ -29,7 +29,7 @@ class RangingResult {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         _region: region.toJson(),
-        _beacons: beacons.isEmpty ? '[]' : beacons.map((e) => e.toJson()).toList(),
+        _beacons: beacons.map((e) => e.toJson()).toList(),
       };
 
   @override

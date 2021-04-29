@@ -25,7 +25,7 @@ class MonitoringResult {
   static const _state = 'state';
 
   final Region region;
-  final MonitoringEvent? type;
+  final MonitoringEvent type;
 
   /// This value is not null when [type] is [MonitoringEvent.didDetermineState]
   final MonitoringState? state;
@@ -43,7 +43,7 @@ class MonitoringResult {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         _region: region.toJson(),
-        _type: type!.toJson(),
+        _type: type.toJson(),
         _state: state?.toJson(),
       };
 
@@ -65,7 +65,7 @@ extension MonitoringEventExtension on MonitoringEvent {
 
 extension _StringExtension on String {
   static bool isBlank(String? value) {
-    return value == null || value.trim().isEmpty;
+    return value?.trim().isEmpty ?? false;
   }
 }
 
