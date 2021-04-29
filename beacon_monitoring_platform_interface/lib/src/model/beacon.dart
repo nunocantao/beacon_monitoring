@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 class Beacon {
   static const _ids = 'ids';
   static const _rssi = 'rssi';
@@ -16,9 +14,9 @@ class Beacon {
   final double distance;
 
   Beacon({
-    @required this.ids,
-    @required this.rssi,
-    @required this.distance,
+    required this.ids,
+    required this.rssi,
+    required this.distance,
   });
 
   Beacon.fromJson(Map<String, dynamic> json)

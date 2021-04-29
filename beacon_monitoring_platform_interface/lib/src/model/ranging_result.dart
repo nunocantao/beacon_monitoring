@@ -4,21 +4,19 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
-import 'region.dart';
 import 'beacon.dart';
+import 'region.dart';
 
 class RangingResult {
   static const _region = 'region';
   static const _beacons = 'beacons';
 
   final Region region;
-  final List<Beacon> beacons;
+  late final List<Beacon> beacons;
 
   RangingResult({
-    @required this.region,
-    @required this.beacons,
+    required this.region,
+    required this.beacons,
   });
 
   RangingResult.fromJson(Map<String, dynamic> json)
@@ -27,7 +25,7 @@ class RangingResult {
             ? (json[_beacons] as List<dynamic>)
                 .map((it) => Beacon.fromJson(it as Map<String, dynamic>))
                 .toList()
-            : null;
+            : List.empty();
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         _region: region.toJson(),
