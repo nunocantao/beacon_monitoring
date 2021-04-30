@@ -25,7 +25,7 @@ enum LocationPermission {
 }
 
 extension LocationPermissionExtension on LocationPermission {
-  static parse(String value) {
+  static parse(String? value) {
     return LocationPermission.values
         .firstWhere((e) => describeEnum(e) == value);
   }
