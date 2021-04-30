@@ -56,9 +56,11 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
 
   @override
   Future<bool> get isBluetoothEnabled {
-    return _methodChannel.invokeMethod<bool>(
-      Config.isBluetoothEnabled,
-    ).then((value) => value == true);
+    return _methodChannel
+        .invokeMethod<bool>(
+          Config.isBluetoothEnabled,
+        )
+        .then((value) => value == true);
   }
 
   @override
@@ -86,9 +88,11 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
 
   @override
   Future<bool> get isLocationEnabled {
-    return _methodChannel.invokeMethod<bool>(
-      Config.isLocationEnabled,
-    ).then((value) => value == true);
+    return _methodChannel
+        .invokeMethod<bool>(
+          Config.isLocationEnabled,
+        )
+        .then((value) => value == true);
   }
 
   @override
@@ -139,9 +143,11 @@ class MethodChannelBeaconMonitoring extends BeaconMonitoringPlatform {
 
   @override
   Future<bool> get isMonitoringStarted {
-    return _methodChannel.invokeMethod<bool>(
-      Config.isMonitoringStarted,
-    ).then((value) => value == true);
+    return _methodChannel
+        .invokeMethod<bool>(
+          Config.isMonitoringStarted,
+        )
+        .then((value) => value == true);
   }
 
   @override
