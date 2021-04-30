@@ -1,6 +1,6 @@
  # beacon_monitoring
 
-A Flutter plugin for monitoring beacons on mobile platforms.
+A Flutter plugin for monitoring beacons (iBeacon) on mobile platforms.
 Supports iOS and Android.
 
 # Usage
@@ -107,7 +107,7 @@ monitoring().listen((event) {
 });
 ``` 
 
-For the background monitoring we need to implementat the callback method and pass it as an argument to *startBackgroundMonitoring* method:
+For the background monitoring we need to implement the callback method and pass it as an argument to *startBackgroundMonitoring* method:
 ```dart
 void backgroundMonitoringCallback(MonitoringResult result) {
     print('Background monitoring received: $result');
@@ -219,10 +219,10 @@ if (locationPermission != LocationPermission.whileInUse) {
 }
 
 if (Platform.isAndroid) {
-    if(!bluetoothEnalbed) openBluetoothSettings();
+    if(!bluetoothEnabled) openBluetoothSettings();
     if(!locationEnabled) openLocationSettings();
 } else if (Platform.isIOS) {
-    if(!bluetoothEnalbed || !locationEnabled) openApplicationSettings();
+    if(!bluetoothEnabled || !locationEnabled) openApplicationSettings();
 }
 ```
 
